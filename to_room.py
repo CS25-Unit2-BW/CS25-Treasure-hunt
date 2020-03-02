@@ -1,12 +1,12 @@
 from util import Queue
 
-def bfs(start, map, destination):
-        
+def to_room(start_room, map, destination):
+        # destiniation is the room id of the destination room
         queue = Queue()
         
         visited = set()
         # add the path to the starting room (including entire room) to the queue
-        queue.enqueue([start])
+        queue.enqueue([start_room])
         
         while queue.size() > 0:
         
@@ -14,7 +14,7 @@ def bfs(start, map, destination):
             # removed the last (entire) room from the queue
             room = path[-1]
             
-            if room == destination:
+            if room.room_id == destination:
                 return path
             elif room not in visited:
                 visited.add(room)
