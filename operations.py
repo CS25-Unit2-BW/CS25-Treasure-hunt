@@ -24,18 +24,18 @@ Warp,
 Mine)
 
 api_key = config('ADAM_KEY')
-header = headers = {
-    "Authorization": api_key
-}
+
 
 class Operations:
     def __init__(self):
         self.current_room = {}
     
     def init_player(self):
-        res = requests.get(Init, header).json()
+        res = requests.get(Init, headers={"Authorization": api_key}).json()
         self.wait = float(res.get('cooldown'))
         self.current_room = res
         sleep(res['cooldown'])
+        print(self.current_room)
         return self.current_room
+        
 Operations().init_player()
