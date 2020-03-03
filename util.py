@@ -55,3 +55,4 @@ Receive = "https://lambda-treasure-hunt.herokuapp.com/api/adv/receive"
 Warp = "https://lambda-treasure-hunt.herokuapp.com/api/adv/warp"
 Mine = "https://lambda-treasure-hunt.herokuapp.com/api/adv/mine"
 Transmorgify = "https://lambda-treasure-hunt.herokuapp.com/api/transmorgify"
+
