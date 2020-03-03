@@ -31,16 +31,12 @@ class Stack():
     def size(self):
         return len(self.stack)
 
-    #GET
 
+#GET
 Init = "https://lambda-treasure-hunt.herokuapp.com/api/adv/init"
 Coin_Balance = "https://lambda-treasure-hunt.herokuapp.com/api/adv/get_balance"
 Last_Proof = "https://lambda-treasure-hunt.herokuapp.com/api/adv/last_proof"
-
-
-
-    #POST 
-
+#POST 
 Move = "https://lambda-treasure-hunt.herokuapp.com/api/adv/move"
 Wise_Explorer =" https://lambda-treasure-hunt.herokuapp.com/api/adv/move"
 Take = "https://lambda-treasure-hunt.herokuapp.com/api/adv/take"
@@ -59,3 +55,4 @@ Receive = "https://lambda-treasure-hunt.herokuapp.com/api/adv/receive"
 Warp = "https://lambda-treasure-hunt.herokuapp.com/api/adv/warp"
 Mine = "https://lambda-treasure-hunt.herokuapp.com/api/adv/mine"
 Transmorgify = "https://lambda-treasure-hunt.herokuapp.com/api/transmorgify"
+
