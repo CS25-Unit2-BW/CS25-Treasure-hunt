@@ -23,19 +23,30 @@ Receive,
 Warp, 
 Mine)
 
+
 api_key = config('ADAM_KEY')
-header = headers = {
-    "Authorization": api_key
-}
+
 
 class Operations:
     def __init__(self):
         self.current_room = {}
     
     def init_player(self):
-        res = requests.get(Init, header).json()
+        res = requests.get(Init, headers={"Authorization": api_key}).json()       
         self.wait = float(res.get('cooldown'))
         self.current_room = res
         sleep(res['cooldown'])
+        print(self.current_room)
         return self.current_room
-Operations().init_player()
+
+    def move(self, direction):
+        if direction not in self.current_room['exits']:
+            print("You can't go that way")
+            return
+        else:
+            res = requests.post(Move, json={'direction': direction}, headers={'Authorization': api_key}).json()
+            self.current_room = res
+            sleep(res['cooldown'])
+            return self.current_room 
+
+        
