@@ -2,7 +2,25 @@ import json
 import requests
 
 from mine import proof_of_work, valid_proof
-from util import Move,Mine,Init,Receive,Inventory,Dash,Carry, Wear,Warp,Wise_Explorer,Fly ,Pray,Drop, Last_Proof,Coin_Balance,Sell,Take,Examine,Change_your_name
+from util import (Move,
+Mine,
+Init,
+Receive,
+Inventory,
+Dash,
+Carry, 
+Wear,
+Warp,
+Wise_Explorer,
+Fly ,
+Pray,
+Drop, 
+Last_Proof,
+Coin_Balance,
+Sell,
+Take,
+Examine,
+Change_your_name)
 
 # for api-key
 from decouple import config
@@ -154,13 +172,29 @@ def warp(NISA_KEY):
     return response
 
 def mine(proof, NISA_KEY):
-    pass
-
-def get_last_proof(NISA_KEY):
-    pass
+    header
+    response = requests.get(
+        Last_Proof,
+        headers= header,
+    )
+    last_block = response['proof']
+    new_proof = proof_of_work(last_block)
+    data = {'proof': new_proof}
+    response = requests.post(
+        Mine,
+        headers = header,
+        data = data
+    )
+    return response
 
 def get_balance(NISA_KEY):
-    pass
+    header
+    response = requests.get(
+        Coin_Balance,
+        headers = header,
+        data=json.dumps({})
+    )
+    return response
 
 def transmogrify(item_name, NISA_KEY):
     pass
