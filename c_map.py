@@ -497,10 +497,11 @@ c_map = {
     154: {'room_id': 154, 'title': 'A misty room', 'description': 'You are standing on grass and surrounded by a dense mist. You can barely make out the exits in any direction.', 'coordinates': '(66,55)', 'elevation': 0, 'terrain': 'NORMAL', 'players': [], 'items': [], 'exits': ['e', 'w'], 'cooldown': 15.0, 'errors': [], 'messages': ['You have walked east.'], 'neighbors': {'e': '193', 'w': '85'}}, 
     193: {'room_id': 193, 'title': 'A misty room', 'description': 'You are standing on grass and surrounded by a dense mist. You can barely make out the exits in any direction.', 'coordinates': '(67,55)', 'elevation': 0, 'terrain': 'NORMAL', 'players': [], 'items': ['tiny treasure'], 'exits': ['e', 'w'], 'cooldown': 15.0, 'errors': [], 'messages': ['You have walked east.'], 'neighbors': {'e': '251', 'w': '154'}}, 
     251: {'room_id': 251, 'title': 'A misty room', 'description': 'You are standing on grass and surrounded by a dense mist. You can barely make out the exits in any direction.', 'coordinates': '(68,55)', 'elevation': 0, 'terrain': 'NORMAL', 'players': [], 'items': ['tiny treasure'], 'exits': ['e', 'w'], 'cooldown': 15.0, 'errors': [], 'messages': ['You have walked east.'], 'neighbors': {'e': '315', 'w': '193'}}, 
-    315: {'room_id': 315, 'title': 'A misty room', 'description': 'You are standing on grass and surrounded by a dense mist. You can barely make out the exits in any direction.', 'coordinates': '(69,55)', 'elevation': 0, 'terrain': 'NORMAL', 'players': [], 'items': ['tiny treasure'], 'exits': ['w'], 'cooldown': 15.0, 'errors': [], 'messages': ['You have walked east.'], 'neighbors': {'w': '251'}}
+    315: {'room_id': 315, 'title': 'A misty room', 'description': 'You are standing on grass and surrounded by a dense mist. You can barely make out the exits in any direction.', 'coordinates': '(69,55)', 'elevation': 0, 'terrain': 'NORMAL', 'players': [], 'items': ['tiny treasure'], 'exits': ['w'], 'cooldown': 15.0, 'errors': [], 'messages': ['You have walked east.'], 'neighbors': {'w': '251'}},
+    177: {"room_id": 177, "title": "A misty room", "description": "You are standing on grass and surrounded by a dense mist. You can barely make out the exits in any direction.", "coordinates": "(54,62)", "elevation": 0, "terrain": "NORMAL", "players": [], "items": ["tiny treasure"], "exits": ["n", "w"], "cooldown": 15.0, "errors": [], "messages": ["You have walked south."], 'neighbors': {"n": "146", "w": "346"}},
     }
 
-# Running this file "python c_map.py" will give you a list of all the special rooms
-for room in c_map:
-    if c_map[room]["title"] != "A misty room" and c_map[room]["title"] != "A Dark Cave" and c_map[room]["title"] != "Mt. Holloway":
-        print(f"{c_map[room]['room_id']} - {c_map[room]['title']} \n {c_map[room]['description']}\n")
+# Uncomment & Running this file "python c_map.py" will give you a list of all the special rooms
+# for room in c_map:
+#     if c_map[room]["title"] != "A misty room" and c_map[room]["title"] != "A Dark Cave" and c_map[room]["title"] != "Mt. Holloway":
+#         print(f"{c_map[room]['room_id']} - {c_map[room]['title']} \n {c_map[room]['description']}\n")
