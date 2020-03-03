@@ -25,7 +25,7 @@ Change_your_name)
 # for api-key
 from decouple import config
 
-NISA_KEY = config('NISA_KEY')
+NISA_KEY = config('ADAM_KEY')
 
 header = {
     'Authorization': f"Token: {NISA_KEY}",
