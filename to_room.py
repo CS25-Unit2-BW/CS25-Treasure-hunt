@@ -9,7 +9,11 @@ returns the directional path
 # only requires the start_room, and destination, c_map is the default map
 # destiniation is the room id of the destination room
 def to_room(start_room, destination, c_map = c_map):
+<<<<<<< HEAD
         #print(c_map.neighbors)
+=======
+        # print(c_map.neighbors)
+>>>>>>> dcbae83402d926f062a4a0db47151ef93677bf3b
         queue = Queue()
         direct = Queue()
         visited = set()
