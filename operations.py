@@ -101,15 +101,21 @@ class Operations:
         sleep(self.current_room["cooldown"])
         res = requests.post(Examine, json={"name": name}, headers={"Authorization": api_key}).json()
         print(res)
-        with open("well.txt", "w") as well:
+        with open("ll.txt", "w") as well:
             well.write(res['description'])
+        #sleep(res["cooldown"])
+         
+    def check_balance(self):
+        res = requests.get("https://lambda-treasure-hunt.herokuapp.com/api/bc/get_balance", headers={"Authorization": api_key}).json()
+        print(res)
         #sleep(res["cooldown"]) 
 
 
-#op = Operations()
+op = Operations()
 #Operations().change_name('The Walking Dude')
 #Operations().init_player()
-#op.init_player()
+op.init_player()
 #op.examine()
 #op.check_status()
+op.check_balance()
         
