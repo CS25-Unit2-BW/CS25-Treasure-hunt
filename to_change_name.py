@@ -24,21 +24,15 @@ def to_change_name(c_map=c_map):
     check_inv = operations.check_status()
     print('CHECK INVENTORY', check_inv['inventory'])
 
-    print(current_room, 'LOOKIE')
-    print(current_room['room_id'],current_room['title'],'NOW LOOK')
-    print(current_room['title'], 'NOW LOOK')
     cur_room_id = current_room['room_id']
     path = to_room(c_map[cur_room_id], 467)
-    # path = bfs(current room, 1(shop room))
     length_of_path = len(path)
-    print(length_of_path)
-    if current_room['title'] == "Pirates Ry's":
+    if current_room['room_id'] == 467:
         operations.change_name('BUM')
     else:
         for m in path:
-            # for loop of move in path:
-            print(current_room['room_id'],current_room['title'],'NOW LOOK')
-            player.move(m)
+            print(check_inv,'NOW LOOK')
+            operations.move(m)
             length_of_path -= 1
 
 
