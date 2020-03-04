@@ -36,7 +36,8 @@ class Operations:
         res = requests.get(Init, headers={"Authorization": api_key}).json()       
         self.wait = float(res.get('cooldown'))
         self.current_room = res
-        sleep(res['cooldown'])        
+        sleep(res['cooldown'])
+        print(self.current_room)        
         return self.current_room
 
     def room_id(self):
@@ -86,6 +87,7 @@ class Operations:
         res = requests.post(Inventory, headers={"Authorization": api_key}).json()
         print(res)
         sleep(res['cooldown'])
+        return res
 
     def wise_explore(self, direction, next):
         if direction not in self.current_room['exits']:
@@ -96,5 +98,5 @@ class Operations:
             sleep(res["cooldown"])
 
 
-
+Operations().init_player()
         
