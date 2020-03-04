@@ -8,6 +8,7 @@ player = Player()
 broke = True
 
 while broke:
+    
     current_room = op.init_player()
     print(op.check_status())        
     sleep(current_room["cooldown"])

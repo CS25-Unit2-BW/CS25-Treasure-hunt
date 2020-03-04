@@ -75,13 +75,13 @@ class Operations:
             sleep(res['cooldown'])
 
     def change_name(self, name):
-        if self.current_room['title'] != "Pirate Ry's":
-            print("Only a pirate can you give a name don't ya know!")
-        else:
-            res = requests.post(Change_your_name, json={"name": [name], "confirm": 'aye'}, headers={'Authorization': api_key}).json()
-            print("You shall be known as", str(name))
-            print(res)
-            return res
+        #if self.current_room["title"] != "Pirate Ry's":
+            #print("Only a pirate can you give a name don't ya know!")
+        #else:
+        res = requests.post(Change_your_name, json={"name": [name], "confirm": 'aye'}, headers={'Authorization': api_key}).json()
+        print("You shall be known as", str(name))
+        print(res)
+        return res
 
     def check_status(self):
         res = requests.post(Inventory, headers={"Authorization": api_key}).json()
@@ -97,6 +97,19 @@ class Operations:
             res = requests.post(Wise_Explorer, json={'direction': direction, 'next_room_id': next}, headers ={'Authorization': api_key}).json()
             sleep(res["cooldown"])
 
+    def examine(self, name="Well"):
+        sleep(self.current_room["cooldown"])
+        res = requests.post(Examine, json={"name": name}, headers={"Authorization": api_key}).json()
+        print(res)
+        with open("well.txt", "w") as well:
+            well.write(res['description'])
+        #sleep(res["cooldown"]) 
 
-Operations().init_player()
+
+#op = Operations()
+#Operations().change_name('The Walking Dude')
+#Operations().init_player()
+#op.init_player()
+#op.examine()
+#op.check_status()
         

@@ -7,7 +7,7 @@ from decouple import config
 from util import Wise_Explorer, Init, Inventory
 
 
-api_key = config('ADAM_KEY')
+api_key = config('API_KEY')
 
 class Player:
     def __init__(self):
