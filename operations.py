@@ -77,7 +77,7 @@ class Operations:
         if self.current_room['title'] != "Pirate Ry's":
             print("Only a pirate can you give a name don't ya know!")
         else:
-            res = requests.post(Change_your_name, json={"name": [name], "confirm": 'aye'}, headers={'authorization': api_key}).json()
+            res = requests.post(Change_your_name, json={"name": [name], "confirm": 'aye'}, headers={'Authorization': api_key}).json()
             print("You shall be known as", str(name))
             print(res)
             return res
@@ -87,6 +87,14 @@ class Operations:
         print(res)
         sleep(res['cooldown'])
         return res
+
+    def wise_explore(self, direction, next):
+        if direction not in self.current_room['exits']:
+            print("Not a valid move")
+            return
+        else:
+            res = requests.post(Wise_Explorer, json={'direction': direction, 'next_room_id': next}, headers ={'Authorization': api_key}).json()
+            sleep(res["cooldown"])
 
 
 
