@@ -12,9 +12,13 @@ from operations import Operations
 from decouple import config
 
 
+
 api_key = config('API_KEY')
 
+
 player = Player()
+op = Operations()
+
 
 operations = Operations()
 
@@ -45,3 +49,4 @@ def to_shop(c_map=c_map):
 
 
 print(to_shop())
+
