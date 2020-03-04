@@ -6,16 +6,20 @@ from to_room import to_room
 
 from player import Player
 
+from operations import Operations
+
 # for api-key
 from decouple import config
 
 
-NISA_KEY = config('NISA_KEY')
+api_key = config('ADAM_KEY')
 
 player = Player()
+op = Operations()
 
 def to_shop():
-    path = to_room(player.current_room, 1, c_map=c_map)
+    current_room = op.init_player()
+    path = to_room(current_room, 1, c_map=c_map)
     # path = bfs(current room, 1(shop room))
     length_of_path = len(path)
     # length of path in variable (easier to utilize)
@@ -27,6 +31,8 @@ def to_shop():
         #decrement length of path -1
     for item in player.inventory:
     # for item in player.inventory
-        sell_treasure(item, NISA_KEY)
+        sell_treasure(item, api_key)
         #sell_treasure(item, API_KEY)
         print(f"You have {player.gold} now!")
+
+to_shop()

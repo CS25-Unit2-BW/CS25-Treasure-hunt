@@ -23,3 +23,5 @@ while broke:
     print(f"You have {gold} Gold!")
     if int(gold) > 1000:
         broke = False
+
+
