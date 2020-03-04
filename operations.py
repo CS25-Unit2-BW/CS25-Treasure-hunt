@@ -25,7 +25,7 @@ Mine)
 #from map_reader import map_reader
 
 
-api_key = config('ADAM_KEY')
+api_key = config('API_KEY')
 
 
 class Operations:
@@ -62,7 +62,7 @@ class Operations:
             res = requests.post(Take, json={"name": item[0]}, headers={"Authorization": api_key}).json()
             sleep(res["cooldown"])
 
-    def sell(self, item="tiny treasure"):
+    def sell(self, item="shiny treasure"):
         if self.current_room["title"] != 'Shop':
             print("This isn't a shop buddy!")
         else:
@@ -86,6 +86,7 @@ class Operations:
         res = requests.post(Inventory, headers={"Authorization": api_key}).json()
         print(res)
         sleep(res['cooldown'])
+        return res
 
     def wise_explore(self, direction, next):
         if direction not in self.current_room['exits']:

@@ -4,7 +4,7 @@ import json
 from util import Queue, Move
 from decouple import config
 
-api_key = config('ADAM_KEY')
+api_key = config('API_KEY')
 
 def starting_room():
     # grab the staring room data and store it in a list

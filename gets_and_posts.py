@@ -25,10 +25,12 @@ Change_your_name)
 # for api-key
 from decouple import config
 
-api_key = config('ADAM_KEY')
+
+api_key = config('API_KEY')
 
 header = {
-    'Authorization': f"Token: {api_key}",
+    'Authorization': f"{api_key}",
+
     'Content-Type': 'application/json',
 }
 
