@@ -25,14 +25,14 @@ Change_your_name)
 # for api-key
 from decouple import config
 
-NISA_KEY = config('ADAM_KEY')
+api_key = config('API_KEY')
 
 header = {
-    'Authorization': f"Token: {NISA_KEY}",
+    'Authorization': f"{api_key}",
     'Content-Type': 'application/json',
 }
 
-def init(NISA_KEY):
+def init(api_key):
     header
     response = requests.get(
         Init,
@@ -42,7 +42,7 @@ def init(NISA_KEY):
     return response
 
 # MOVEMENT ENDPOINTS
-def move(direction, NISA_KEY):
+def move(direction, api_key):
     header
     response = requests.post(
         Move,
@@ -51,7 +51,7 @@ def move(direction, NISA_KEY):
     )
     return response
 
-def wise_explorer(direction, room_id, NISA_KEY):
+def wise_explorer(direction, room_id, api_key):
     header
     response = requests.post(
         Wise_Explorer,
@@ -62,7 +62,7 @@ def wise_explorer(direction, room_id, NISA_KEY):
 
 
 # TREASURE ENDPOINTS
-def pickup_treasure(treasure, NISA_KEY):
+def pickup_treasure(treasure, api_key):
     header
     response = requests.post(
         Take,
@@ -71,7 +71,7 @@ def pickup_treasure(treasure, NISA_KEY):
     )
     return response
 
-def examine(treasure_name, player_name, NISA_KEY):
+def examine(treasure_name, player_name, api_key):
     header
     response = requests.post(
         Examine,
@@ -80,7 +80,7 @@ def examine(treasure_name, player_name, NISA_KEY):
     )
     return response
 
-def drop_treasure(treasure, NISA_KEY):
+def drop_treasure(treasure, api_key):
     header
     response = requests.post(
         Drop,
@@ -89,7 +89,7 @@ def drop_treasure(treasure, NISA_KEY):
     )
     return response
 
-def sell_treasure(treasure, NISA_KEY):
+def sell_treasure(treasure, api_key):
     header
     response = requests.post(
         Sell,
@@ -98,7 +98,7 @@ def sell_treasure(treasure, NISA_KEY):
     )
     return response
 
-def status_inventory(NISA_KEY):
+def status_inventory(api_key):
     header
     response = requests.post(
         Inventory,
@@ -107,7 +107,7 @@ def status_inventory(NISA_KEY):
     )
     return response
 
-def name_change(name, NISA_KEY):
+def name_change(name, api_key):
     header
     response = requests.post(
         Change_your_name,
@@ -116,7 +116,7 @@ def name_change(name, NISA_KEY):
     )
     return response
 
-def pray_at_shrine(NISA_KEY):
+def pray_at_shrine(api_key):
     header
     response=requests.post(
         Pray,
@@ -125,7 +125,7 @@ def pray_at_shrine(NISA_KEY):
     )
     return response
 
-def fly(direction, NISA_KEY):
+def fly(direction, api_key):
     header
     response = requests.post(
         Fly,
@@ -134,7 +134,7 @@ def fly(direction, NISA_KEY):
     )
     return response
 
-def dash(direction, num_rooms, room_id, NISA_KEY):
+def dash(direction, num_rooms, room_id, api_key):
     header
     response = requests.post(
         Dash,
@@ -143,7 +143,7 @@ def dash(direction, num_rooms, room_id, NISA_KEY):
     )
     return response
 
-def carry(item_name, NISA_KEY):
+def carry(item_name, api_key):
     header
     response = requests.post(
         Carry,
@@ -152,7 +152,7 @@ def carry(item_name, NISA_KEY):
     )
     return response
 
-def receive(NISA_KEY):
+def receive(api_key):
     header
     response = requests.post(
         Receive,
@@ -162,7 +162,7 @@ def receive(NISA_KEY):
     return response
     
 
-def warp(NISA_KEY):
+def warp(api_key):
     header
     response = requests.post(
         Warp,
@@ -171,7 +171,7 @@ def warp(NISA_KEY):
     )
     return response
 
-def mine(proof, NISA_KEY):
+def mine(proof, api_key):
     header
     response = requests.get(
         Last_Proof,
@@ -187,7 +187,7 @@ def mine(proof, NISA_KEY):
     )
     return response
 
-def get_balance(NISA_KEY):
+def get_balance(api_key):
     header
     response = requests.get(
         Coin_Balance,
@@ -196,5 +196,5 @@ def get_balance(NISA_KEY):
     )
     return response
 
-def transmogrify(item_name, NISA_KEY):
+def transmogrify(item_name, api_key):
     pass

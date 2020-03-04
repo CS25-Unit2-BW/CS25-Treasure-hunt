@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import json
 import requests
 from operations import Operations
@@ -6,13 +5,15 @@ from util import Queue
 from time import sleep
 from decouple import config
 
+from util import Wise_Explorer,Init,Inventory, Move
 
-api_key = config('ADAM_KEY')
+api_key = config('API_KEY')
 
 class Player:
     def __init__(self):
         self.op = Operations()
-        self.op.init_player()        
+        self.op.init_player()  
+        self.op.check_status()
 
     def sticky_fingers(self, current_room, item):
         room_data = []
@@ -96,82 +97,33 @@ class Player:
             if room == next:
                 return connection
         return None
-=======
-# for api-key
-from decouple import config
 
-import requests
-import json
-from util import Wise_Explorer,Init,Inventory
-
-NISA_KEY = config('NISA_KEY')
-
-class Player:
-    def __init__(self):
-        self.init()
-        self.status()
-
-    def init(self):
-        header = {
-                "Authorization": f"Token {NISA_KEY}",
-                "Content-Type": "application/json",
-        }
-
-        response = requests.get(
-            Init,
-            headers = header,
-        )
-        self.current_room = response["room_id"]
-        self.room_items = response["items"]
-        self.room_exits = response["exits"]
-        self.errors = response["errors"]
-        self.messages = response["messages"]
-        self.cooldown = response["cooldown"]
-        return response
-
-    def status(self):
-        header = {
-                "Authorization": f"Token {NISA_KEY}",
-                "Content-Type": "application/json",
-        }
-
-        response = requests.get(
-            Inventory,
-            headers = header,
-        )
-        self.name = response["name"]
-        self.encumbrance = response["encumbrance"]
-        self.strength = response["strength"]
-        self.speed = response["speed"]
-        self.gold = response["gold"]
-        self.inventory = response["inventory"]
-        self.errors = response["errors"]
-        self.messages = response["messages"]
-        self.bodywear = None
-        self.footwear = None
-        self.abilities = []
-        return response
+    def move(self, direction):
+        if direction not in self.op.current_room['exits']:
+            print("You can't go that way")
+            return
+        else:
+            res = requests.post(Move, json={'direction': direction}, headers={'Authorization': api_key}).json()
+            self.current_room = res
+            sleep(res['cooldown'])
+            return self.current_room
     
+    # def wise_explorer(self, direction, room_id):
+    #     header = {
+    #         "Authorization": f"Token {api_key}",
+    #         "Content-Type": "application/json"
+    #     }
 
+    #     response = requests.post(
+    #         Wise_Explorer,
+    #         headers=header,
+    #         data=json.dumps({"direction": direction, "next_room_id": str(room_id)}),
+    #     )
 
-    def wise_explorer(self, direction, room_id):
-        header = {
-            "Authorization": f"Token {NISA_KEY}",
-            "Content-Type": "application/json"
-        }
-
-        response = requests.post(
-            Wise_Explorer,
-            headers=header,
-            data=json.dumps({"direction": direction, "next_room_id": str(room_id)}),
-            cooldown=self.cooldown
-        )
-
-        self.current_room = response["room_id"]
-        self.room_items = response["items"]
-        self.room_exits = response["exits"]
-        self.errors = response["errors"]
-        self.messages = response["messages"]
-        self.cooldown = response["cooldown"]
-        return response
->>>>>>> 3078cd8f17e9d85e60d83d96792caf4a9516f262
+    #     self.current_room = response["room_id"]
+    #     self.room_items = response["items"]
+    #     self.room_exits = response["exits"]
+    #     self.errors = response["errors"]
+    #     self.messages = response["messages"]
+    #     self.cooldown = response["cooldown"]
+    #     return response
