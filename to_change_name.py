@@ -18,24 +18,22 @@ player = Player()
 
 operations = Operations()
 
-def to_shop(c_map=c_map):
+def to_change_name(c_map=c_map):
     current_room = operations.init_player()
 
     check_inv = operations.check_status()
+    print('CHECK INVENTORY', check_inv['inventory'])
 
     cur_room_id = current_room['room_id']
-    path = to_room(c_map[cur_room_id], 1)
+    path = to_room(c_map[cur_room_id], 467)
     length_of_path = len(path)
-    if current_room['title'] == 'Shop':
-        for item in check_inv['inventory']:
-            operations.sell(item)
-            print(f"You have {check_inv['gold']} now!")
+    if current_room['room_id'] == 467:
+        operations.change_name('BUM')
     else:
         for m in path:
-            print(m, 'THIS ONE')
-            print(current_room['room_id'],current_room['title'],'NOW LOOK')
+            print(check_inv,'NOW LOOK')
             operations.move(m)
             length_of_path -= 1
 
 
-print(to_shop())
+print(to_change_name())
