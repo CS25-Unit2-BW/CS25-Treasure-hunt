@@ -12,27 +12,41 @@ from operations import Operations
 from decouple import config
 
 
-api_key = config('ADAM_KEY')
+
+api_key = config('API_KEY')
+
 
 player = Player()
 op = Operations()
 
-def to_shop():
-    current_room = op.init_player()
-    path = to_room(current_room, 1, c_map=c_map)
+
+operations = Operations()
+
+def to_shop(c_map=c_map):
+    current_room = operations.init_player()
+
+    check_inv = operations.check_status()
+    print('CHECK INVENTORY', check_inv['inventory'])
+
+    print(current_room, 'LOOKIE')
+    print(current_room['room_id'],current_room['title'],'NOW LOOK')
+    print(current_room['exits'], 'NOW LOOK')
+    cur_room_id = current_room['room_id']
+    path = to_room(c_map[cur_room_id], 1)
     # path = bfs(current room, 1(shop room))
     length_of_path = len(path)
-    # length of path in variable (easier to utilize)
-    for m in path:
-    # for loop of move in path:
-        player.wise_explorer(m[0], m[1])
-        #move player from move[0] to move[1] -- can use move or wise_explorer maybe?
-        length_of_path -= 1
-        #decrement length of path -1
-    for item in player.inventory:
-    # for item in player.inventory
-        sell_treasure(item, api_key)
-        #sell_treasure(item, API_KEY)
-        print(f"You have {player.gold} now!")
+    if current_room['title'] == 'Shop':
+        for item in check_inv['inventory']:
+            operations.sell(item)
+            print(f"You have {check_inv['gold']} now!")
+    else:
+        for m in path:
+            # for loop of move in path:
+            print(m, 'THIS ONE')
+            print(current_room['room_id'],current_room['title'],'NOW LOOK')
+            player.move(m)
+            length_of_path -= 1
 
-to_shop()
+
+print(to_shop())
+

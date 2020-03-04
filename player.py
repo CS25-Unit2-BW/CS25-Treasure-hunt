@@ -219,6 +219,3 @@ class Player:
 #         self.abilities = []
 #         return response
     
-
-
-    
