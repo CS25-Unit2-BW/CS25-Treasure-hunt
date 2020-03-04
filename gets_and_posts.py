@@ -173,12 +173,13 @@ def warp(api_key):
     )
     return response
 
-def mine(proof, api_key):
+def mine():
     header
     response = requests.get(
         Last_Proof,
-        headers= header,
+        headers= header
     )
+    print(response, "LOOKIE!")
     last_block = response['proof']
     new_proof = proof_of_work(last_block)
     data = {'proof': new_proof}
