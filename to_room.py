@@ -9,7 +9,7 @@ returns the directional path
 # only requires the start_room, and destination, c_map is the default map
 # destiniation is the room id of the destination room
 def to_room(start_room, destination, c_map = c_map):
-        # print(c_map.neighbors)
+
         queue = Queue()
         direct = Queue()
         visited = set()
@@ -26,8 +26,8 @@ def to_room(start_room, destination, c_map = c_map):
             directions = direct.dequeue()
 
             if room["room_id"] == destination:
-                print(f"path: {path}")
-                print(f"directions: {directions}")
+                #print(f"path: {path}")
+                #print(f"directions: {directions}")
                 return directions
             elif room["room_id"] in visited:
                 continue

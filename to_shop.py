@@ -8,6 +8,8 @@ from player import Player
 
 from operations import Operations
 
+import sys
+
 # for api-key
 from decouple import config
 
@@ -23,6 +25,7 @@ def to_shop(c_map=c_map):
 
     check_inv = operations.check_status()
 
+
     cur_room_id = current_room['room_id']
     path = to_room(c_map[cur_room_id], 1)
     length_of_path = len(path)
@@ -36,6 +39,7 @@ def to_shop(c_map=c_map):
             print(current_room['room_id'],current_room['title'],'NOW LOOK')
             operations.move(m)
             length_of_path -= 1
+
 
 
 print(to_shop())
